@@ -1,0 +1,36 @@
+server {
+  listen 80;
+  server_name  <%= node['hostname'] %>;
+  root <%= node['nginx']['webroot'] %>;
+  index index.php index.html index.htm;
+
+  access_log  <%= node['nginx']['log_dir'] %>/<%= node['hostname'] %>.access.log;
+
+  # Turn Off Caching during dev.
+  #
+  # EnableSendfile: Control whether the sendfile kernel support is
+  # used to deliver files (assuming that the OS supports it).
+  # The default is on; turn this off if you serve from NFS-mounted
+  # filesystems. Please see
+  # http://httpd.apache.org/docs/2.2/mod/core.html#enablesendfile
+  #
+  # @source http://abitwiser.wordpress.com/2011/02/24/virtualbox-hates-sendfile/
+  sendfile off;
+  expires off;
+
+  location / {
+  }
+
+  # Specifically disable the execution of PHP files in any directory containing user uploads.
+  # also set cgi.fix_pathinfo=0 in php.ini
+  location /uploaddir {
+    location ~ \.php$ {return 403;}
+  }
+
+  location ~ (\.php)$ {
+    try_files $uri $uri/ /index.php?q=$uri&$args;
+    include fastcgi_params;
+    fastcgi_index index.php;
+    fastcgi_pass 127.0.0.1:9000;
+  }
+}

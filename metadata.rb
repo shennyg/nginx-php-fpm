@@ -1,6 +1,5 @@
-maintainer       "YOUR_COMPANY_NAME"
-maintainer_email "YOUR_EMAIL"
+maintainer       "Shen DeShayne"
+maintainer_email "shennyg@gmail.com"
 license          "All rights reserved"
-description      "Installs/Configures nginx-php-fpm"
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+description      "Installs/Configures Nginx & PHP-FPM"
 version          "0.1.0"

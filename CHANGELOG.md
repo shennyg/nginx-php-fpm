@@ -4,7 +4,7 @@ This file is used to list changes made in each version of nginx-php-fpm.
 
 ## 0.1.0:
 
-* Initial release of nginx-php-fpm
+* Initial release of nginx-php-fpm, tested on ubuntu precise64
 
 - - - 
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

@@ -1,12 +1,14 @@
-Description
-===========
+# Description
 
-Requirements
-============
+## Nginx PHP-FPM webapp chef cookbook
 
-Attributes
-==========
+* tested on ubuntu precise64
 
-Usage
-=====
+# Requirements
+
+* nginx
+
+# Attributes
+
+# Usage
 
