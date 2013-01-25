@@ -31,8 +31,8 @@ end
 # create php test file in the webroot
 template "#{node['nginx']['webroot']}/index.php" do
   source "php-test.erb"
-  owner "root"
-  group "root"
+  owner node['user']['new_user']
+  group "www-data"
   mode 00644
 end
 
