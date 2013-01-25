@@ -24,7 +24,7 @@ directory "#{node['nginx']['webroot']}" do
   recursive true
   owner node['user']['new_user']
   group "www-data"
-  mode 00644
+  mode 00755
   action :create
 end
 
@@ -33,7 +33,7 @@ template "#{node['nginx']['webroot']}/index.php" do
   source "php-test.erb"
   owner node['user']['new_user']
   group "www-data"
-  mode 00644
+  mode 00755
 end
 
 # create nginx server block file
@@ -41,7 +41,7 @@ template "#{node['nginx']['dir']}/sites-available/webapp" do
   source "webapp.erb"
   owner "root"
   group "root"
-  mode 00644
+  mode 00755
   notifies :reload, 'service[nginx]'
 end
 
