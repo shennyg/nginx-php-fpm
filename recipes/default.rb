@@ -9,6 +9,13 @@ user_account node['user']['new_user'] do
   ssh_keys node['user']['authorized_keys']
 end
 
+# add user to www-data group
+group "www-data" do
+  action :modify
+  members node['user']['new_user']
+  append true
+end
+
 # install nginx
 include_recipe 'nginx'
 
