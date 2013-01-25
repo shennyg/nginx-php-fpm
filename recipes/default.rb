@@ -13,9 +13,12 @@ end
 include_recipe 'nginx'
 
 # create webroot
-execute "make-webroot" do
-  command "mkdir -p #{node['nginx']['webroot']}"
-  action :run
+directory "#{node['nginx']['webroot']}" do
+  recursive true
+  owner node['user']['new_user']
+  group "www-data"
+  mode 00644
+  action :create
 end
 
 # create php test file in the webroot
