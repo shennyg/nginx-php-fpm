@@ -50,3 +50,11 @@ nginx_site 'webapp' do
   enable true
 end
 
+package "php5-mysql" do
+  action :install
+end
+
+package "php-apc" do
+  action :install
+end
+
