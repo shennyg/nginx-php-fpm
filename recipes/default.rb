@@ -20,7 +20,7 @@ end
 include_recipe 'nginx'
 
 # create webroot
-directory "#{node['nginx']['webroot']}" do
+directory node['nginx']['webroot'] do
   recursive true
   owner node['user']['new_user']
   group "www-data"
