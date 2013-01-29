@@ -34,6 +34,7 @@ template "#{node['nginx']['webroot']}/index.php" do
   owner node['user']['new_user']
   group "www-data"
   mode 00755
+  only_if { node['show_phpinfo_as_index'] }
 end
 
 # create nginx server block file
