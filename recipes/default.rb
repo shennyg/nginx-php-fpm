@@ -37,15 +37,6 @@ template "#{node['nginx']['webroot']}/index.php" do
   only_if { node['show_phpinfo_as_index'] }
 end
 
-# create nginx server block file
-template "#{node['nginx']['dir']}/sites-available/webapp" do
-  source "webapp.erb"
-  owner "root"
-  group "root"
-  mode 00755
-  notifies :reload, 'service[nginx]'
-end
-
 # enable the server block we just created
 nginx_site 'webapp' do
   enable true
@@ -61,5 +52,14 @@ end
 
 package "php-curl" do
   action :install
+end
+
+# create nginx server block file
+template "#{node['nginx']['dir']}/sites-available/webapp" do
+  source "webapp.erb"
+  owner "root"
+  group "root"
+  mode 00755
+  notifies :reload, 'service[nginx]'
 end
 
