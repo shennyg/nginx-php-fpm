@@ -59,3 +59,7 @@ package "php-apc" do
   action :install
 end
 
+package "php-curl" do
+  action :install
+end
+
