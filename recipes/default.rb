@@ -50,7 +50,7 @@ package "php-apc" do
   action :install
 end
 
-package "php-curl" do
+package "php5-curl" do
   action :install
 end
 
