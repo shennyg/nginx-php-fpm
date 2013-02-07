@@ -60,6 +60,6 @@ template "#{node['nginx']['dir']}/sites-available/webapp" do
   owner "root"
   group "root"
   mode 00755
-  notifies :reload, 'service[nginx]'
+  notifies :reload, 'php5-fpm'
 end
 
