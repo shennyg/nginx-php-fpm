@@ -52,6 +52,7 @@ end
 
 package "php5-curl" do
   action :install
+  notifies :reload, 'service[php5-fpm]'
 end
 
 # create nginx server block file
@@ -60,6 +61,6 @@ template "#{node['nginx']['dir']}/sites-available/webapp" do
   owner "root"
   group "root"
   mode 00755
-  notifies :reload, 'php5-fpm'
+  notifies :reload, 'service[nginx]'
 end
 
