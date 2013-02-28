@@ -37,11 +37,6 @@ template "#{node['nginx']['webroot']}/index.php" do
   only_if { node['show_phpinfo_as_index'] }
 end
 
-# enable the server block we just created
-nginx_site 'webapp' do
-  enable true
-end
-
 package "php5-mysql" do
   action :install
 end
@@ -61,6 +56,11 @@ template "#{node['nginx']['dir']}/sites-available/webapp" do
   owner "root"
   group "root"
   mode 00755
+end
+
+# enable the server block we just created
+nginx_site 'webapp' do
+  enable true
   notifies :reload, 'service[nginx]'
 end
 
